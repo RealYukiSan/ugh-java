@@ -31,3 +31,13 @@ PS C:\Users\Kyouma\HelloJava> zip -uj samplebuild.apk classes.dex
 PS C:\Users\Kyouma\HelloJava> zipalign.exe -p -f -v 4 .\samplebuild.apk aligned.apk
 PS C:\Users\Kyouma\HelloJava> apksigner.bat sign --ks .\debug.keystore --ks-pass pass:android --out signed.apk .\aligned.apk
 ```
+
+## Repatch other apk (telkomsel roli)
+
+```sh
+apktool.bat d telkomsel_roli.apk # modify smali stage
+apktool.bat b .\telkomsel_roli -o patched_roli.apk
+zipalign.exe -p -f -v 4 .\patched_roli.apk aligned_roli.apk
+apksigner.bat sign --ks .\debug.keystore --ks-pass pass:android --out final_roli.apk .\aligned_roli.apk # Make sure you've generated the keystore.
+adb install .\final_roli.apk # final signed patched  aligned apk
+```
