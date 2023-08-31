@@ -41,3 +41,5 @@ zipalign.exe -p -f -v 4 .\patched_roli.apk aligned_roli.apk
 apksigner.bat sign --ks .\debug.keystore --ks-pass pass:android --out final_roli.apk .\aligned_roli.apk # Make sure you've generated the keystore.
 adb install .\final_roli.apk # final signed patched  aligned apk
 ```
+
+### (Other Link)[https://www.facebook.com/permalink.php?story_fbid=pfbid06v2GZ6ctwsWStEkVt9KhYLzc3Gg8sQTpks9jqnFcEpJRKaiWepB45NxH4FbBDSMSl&id=100090321692618]
