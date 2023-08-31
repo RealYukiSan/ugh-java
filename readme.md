@@ -42,4 +42,4 @@ apksigner.bat sign --ks .\debug.keystore --ks-pass pass:android --out final_roli
 adb install .\final_roli.apk # final signed patched  aligned apk
 ```
 
-### (Other Link)[https://www.facebook.com/permalink.php?story_fbid=pfbid06v2GZ6ctwsWStEkVt9KhYLzc3Gg8sQTpks9jqnFcEpJRKaiWepB45NxH4FbBDSMSl&id=100090321692618]
+### [Other Link](https://www.facebook.com/permalink.php?story_fbid=pfbid06v2GZ6ctwsWStEkVt9KhYLzc3Gg8sQTpks9jqnFcEpJRKaiWepB45NxH4FbBDSMSl&id=100090321692618)
