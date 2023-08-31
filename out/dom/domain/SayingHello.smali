@@ -27,7 +27,7 @@
     invoke-direct {p1, p0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
     .line 10
-    const-string v0, "Hello world"
+    const-string v0, "Hello world, patched"
 
     invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 

@@ -19,3 +19,15 @@ These command will generate the following output:
 - zipalign: optimized aligned.apk
 - keytool: generate key, debug.keystore
 - apksigner: final apk, signing.apk
+
+## Try to repatch the apk
+
+`baksmali dis classes.dex`, edit the string on generated `.smali`
+add modified dex to repatch the apk:
+
+```
+PS C:\Users\Kyouma\HelloJava> smali as ./out/dom/domain/SayingHello.smali -o classes.dex
+PS C:\Users\Kyouma\HelloJava> zip -uj samplebuild.apk classes.dex
+PS C:\Users\Kyouma\HelloJava> zipalign.exe -p -f -v 4 .\samplebuild.apk aligned.apk
+PS C:\Users\Kyouma\HelloJava> apksigner.bat sign --ks .\debug.keystore --ks-pass pass:android --out signed.apk .\aligned.apk
+```
