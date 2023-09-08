@@ -8,6 +8,17 @@ transformation = AES/CBC/PKCS7Padding
 
 reqparam and reqparampost using hex format -> base64 -> encrypted data -> json
 
+Example in javascript
+
+```javascript
+const { Buffer } = require("node:buffer");
+const hexString = "6332566A636D5630627942745A584E7A5957646C";
+const base64 = Buffer.from(hexString, "hex").toString();
+const decoded = Buffer.from(base64, "base64").toString("hex");
+
+console.log(decoded);
+```
+
 # Sample
 
 [POST] login
