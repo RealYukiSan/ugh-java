@@ -11,8 +11,10 @@ jSONObject contain decrypted reqparam
 todo:
 findout encryption mechanism for reqparam and reqparampost
 findout attendance api (reedem / 30 days)
+findout cara perpanjang validity coin
 create auto-fill survey
 create scheduler script like cronjob? register as startup program?
+apakah ada celah pada kode referral invite friend? biar bisa nuyul :v
 
 what I want to understand:
 

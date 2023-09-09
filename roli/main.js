@@ -2,6 +2,7 @@ const readline = require('node:readline');
 const fs = require('node:fs');
 const { stdin: input, stdout: output } = require('node:process');
 const { encrypt, decrypt } = require('./decode');
+const path = require('node:path');
 
 const baseurl = "https://roli.telkomsel.com"
 const config = {
@@ -15,8 +16,9 @@ const config = {
     "os":"Android+12",
   },
   unique_identifier: 'rol1#@#netr3fo',
+  key: 'm0b1l3',
   wheel_id: '13',
-  wheel_item_id: '58'
+  wheel_item_id: '58' // 1000 coins!
 };
 
 (async () => {
@@ -25,9 +27,10 @@ const config = {
   let token
   let reqparam
   let reqparampost
+  const form = new FormData()
 
   try {
-    user = JSON.parse(fs.readFileSync("./env.json", "utf8"))
+    user = JSON.parse(fs.readFileSync(path.join(__dirname, "env.json"), "utf8"))
   } catch {
     const creds = {}
     creds.user_name = await new Promise(resolve => {
@@ -36,19 +39,17 @@ const config = {
     creds.password = await new Promise(resolve => {
       rl.question('Password> ', resolve);
     })
-    creds.key = 'm0b1l3'
 
     reqparampost = encrypt(JSON.stringify(creds))
-    const form = new FormData()
     form.append("reqparampost", reqparampost)
     token = encrypt(tokenize("user/login"))
     reqparam = encrypt(JSON.stringify({
-      "key": creds.key,
+      "key": config.key,
       "version_number": config.version_number,
       "token": token,
       ...config.android
     }))
-    const response = await fetch(new URL(`/api/user/login?key=${creds.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
+    const response = await fetch(new URL(`/api/user/login?key=${config.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
       method: "POST",
       body: form,
       headers: {
@@ -61,12 +62,12 @@ const config = {
     const data = decrypt(response)
     user = JSON.parse(data)
 
-    fs.writeFile("./env.json", data, "utf8")
+    fs.writeFileSync("./env.json", data, "utf8")
   }
   
   token = encrypt(tokenize("wheel/user_choose_wof"))
   reqparampost = encrypt(JSON.stringify({
-    "key": creds.key,
+    "key": config.key,
     "session": user.session,
     "wheel_id": encrypt(`${getCurrentDateTimeFormatted()}-${user.session}-${config.wheel_id}-${config.unique_identifier}`),
     "wheel_item_id": encrypt(`${getCurrentDateTimeFormatted()}-${user.session}-${config.wheel_item_id}-${config.unique_identifier}`),
@@ -77,7 +78,7 @@ const config = {
     "token": token
   }))
   reqparam = encrypt(JSON.stringify({
-    "key": creds.key,
+    "key": config.key,
     "session": user.session,
     "version_number": config.version_number,
     "token": token,
@@ -86,7 +87,7 @@ const config = {
     ...config.android,
   }))
   form.set("reqparampost", reqparampost)
-  const spin_coin = await fetch(new URL(`/api/wheel/user_choose_wof?key=${creds.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
+  const spin_coin = await fetch(new URL(`/api/wheel/user_choose_wof?key=${config.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
     method: "POST",
     body: form,
     headers: {
