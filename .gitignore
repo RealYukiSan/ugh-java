@@ -1,5 +1,6 @@
-**/*.class
-**/*.dex
-**/*.zip
+*.class
+*.dex
+*.zip
 *.apk*
 *.keystore
+*.env

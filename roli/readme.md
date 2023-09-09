@@ -1,11 +1,5 @@
 # My First Reverse Engineering Experiment :D
 
-Decipher attribute:
-IV = ROlITE%lKo#S2019
-Secret = T%Elko#SROl1%819
-Algorithm = AES
-transformation = AES/CBC/PKCS7Padding
-
 reqparam and reqparampost using hex format -> base64 -> encrypted data -> json
 
 Example in javascript
