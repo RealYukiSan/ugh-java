@@ -10,6 +10,9 @@ jSONObject contain decrypted reqparam
 
 todo:
 findout encryption mechanism for reqparam and reqparampost
+findout attendance api (reedem / 30 days)
+create auto-fill survey
+create scheduler script like cronjob? register as startup program?
 
 what I want to understand:
 

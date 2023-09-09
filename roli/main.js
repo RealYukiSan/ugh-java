@@ -21,10 +21,15 @@ const config = {
 
 (async () => {
   const rl = readline.createInterface({ input, output });
-  let creds = {}
+  let user
+  let token
+  let reqparam
+  let reqparampost
+
   try {
-    creds = JSON.parse(fs.readFileSync("./env.json", "utf8"))
+    user = JSON.parse(fs.readFileSync("./env.json", "utf8"))
   } catch {
+    const creds = {}
     creds.user_name = await new Promise(resolve => {
       rl.question('Phone> ', resolve);
     })
@@ -32,52 +37,52 @@ const config = {
       rl.question('Password> ', resolve);
     })
     creds.key = 'm0b1l3'
-    fs.writeFile("./env.json", JSON.stringify(creds), "utf8")
+
+    reqparampost = encrypt(JSON.stringify(creds))
+    const form = new FormData()
+    form.append("reqparampost", reqparampost)
+    token = encrypt(tokenize("user/login"))
+    reqparam = encrypt(JSON.stringify({
+      "key": creds.key,
+      "version_number": config.version_number,
+      "token": token,
+      ...config.android
+    }))
+    const response = await fetch(new URL(`/api/user/login?key=${creds.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
+      method: "POST",
+      body: form,
+      headers: {
+        'Accept-Encoding': 'gzip',
+        'User-Agent': 'okhttp/4.9.0',
+        'Connection': 'Keep-Alive',
+        'Host': 'roli.telkomsel.com',
+      }
+    }).then(res => res.text())
+    const data = decrypt(response)
+    user = JSON.parse(data)
+
+    fs.writeFile("./env.json", data, "utf8")
   }
   
-  let reqparampost = encrypt(JSON.stringify(creds))
-  
-  const form = new FormData()
-  form.append("reqparampost", reqparampost)
-  
-  let token = encrypt(tokenize("user/login"))
-  let reqparam = encrypt(JSON.stringify({
-    "key": creds.key,
-    "version_number": config.version_number,
-    "token": token,
-    ...config.android
-  }))
-  const response = await fetch(new URL(`/api/user/login?key=${creds.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, baseurl), {
-    method: "POST",
-    body: form,
-    headers: {
-      'Accept-Encoding': 'gzip',
-      'User-Agent': 'okhttp/4.9.0',
-      'Connection': 'Keep-Alive',
-      'Host': 'roli.telkomsel.com',
-    }
-  }).then(res => res.text())
-  const login = JSON.parse(decrypt(response))
-
   token = encrypt(tokenize("wheel/user_choose_wof"))
   reqparampost = encrypt(JSON.stringify({
     "key": creds.key,
-    "session": login.session,
-    "wheel_id": encrypt(`${getCurrentDateTimeFormatted()}-${login.session}-${config.wheel_id}-${config.unique_identifier}`),
-    "wheel_item_id": encrypt(`${getCurrentDateTimeFormatted()}-${login.session}-${config.wheel_item_id}-${config.unique_identifier}`),
-    "msisdn": login.data.msisdn.replace(/^0/, '62'),
+    "session": user.session,
+    "wheel_id": encrypt(`${getCurrentDateTimeFormatted()}-${user.session}-${config.wheel_id}-${config.unique_identifier}`),
+    "wheel_item_id": encrypt(`${getCurrentDateTimeFormatted()}-${user.session}-${config.wheel_item_id}-${config.unique_identifier}`),
+    "msisdn": user.data.msisdn.replace(/^0/, '62'),
     "bahasa": "2",
-    "id_user": login.data.id,
+    "id_user": user.data.id,
     "version_number": config.version_number,
     "token": token
   }))
   reqparam = encrypt(JSON.stringify({
     "key": creds.key,
-    "session": login.session,
+    "session": user.session,
     "version_number": config.version_number,
     "token": token,
-    "msisdn": login.data.msisdn.replace(/^0/, '62'),
-    "id_user": login.data.id,
+    "msisdn": user.data.msisdn.replace(/^0/, '62'),
+    "id_user": user.data.id,
     ...config.android,
   }))
   form.set("reqparampost", reqparampost)

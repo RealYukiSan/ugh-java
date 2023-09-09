@@ -4,4 +4,3 @@
 *.apk*
 *.keystore
 roli/env.json
-roli/node_modules
