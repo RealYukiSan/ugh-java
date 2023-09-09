@@ -1,4 +1,5 @@
 const readline = require('node:readline');
+const fs = require('node:fs');
 const { stdin: input, stdout: output } = require('node:process');
 const { encrypt, decrypt } = require('./decode');
 
@@ -20,15 +21,19 @@ const config = {
 
 (async () => {
   const rl = readline.createInterface({ input, output });
-  const creds = {}
-
-  creds.user_name = await new Promise(resolve => {
-    rl.question('Phone> ', resolve);
-  })
-  creds.password = await new Promise(resolve => {
-    rl.question('Password> ', resolve);
-  })
-  creds.key = 'm0b1l3'
+  let creds = {}
+  try {
+    creds = JSON.parse(fs.readFileSync("./env.json", "utf8"))
+  } catch {
+    creds.user_name = await new Promise(resolve => {
+      rl.question('Phone> ', resolve);
+    })
+    creds.password = await new Promise(resolve => {
+      rl.question('Password> ', resolve);
+    })
+    creds.key = 'm0b1l3'
+    fs.writeFile("./env.json", JSON.stringify(creds), "utf8")
+  }
   
   let reqparampost = encrypt(JSON.stringify(creds))
   

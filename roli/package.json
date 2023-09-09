@@ -1,0 +1,16 @@
+{
+  "name": "roli",
+  "version": "1.0.0",
+  "description": "Experiment RE on android apk",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [
+    "android",
+    "patch",
+    "apk"
+  ],
+  "author": "Reyuki",
+  "license": "ISC"
+}
