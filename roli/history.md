@@ -10,7 +10,7 @@ jSONObject contain decrypted reqparam
 
 todo:
 findout encryption mechanism for reqparam and reqparampost [done]
-findout attendance api (reedem / 30 days) [founded on daily_reward/info_indirect]
+findout attendance api (reedem / 30 days) [founded on daily_reward/info_indirect, but I think it's only for print on the home screen :v]
 findout cara perpanjang validity coin
 create auto-fill survey
 create scheduler script like cronjob? register as startup program?
