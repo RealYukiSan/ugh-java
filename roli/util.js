@@ -12,13 +12,15 @@ async function login() {
   try {
     account = JSON.parse(fs.readFileSync(path.join(__dirname, "env.json"), "utf8"))
   } catch {
-    const creds = {}
-    creds.user_name = await new Promise(resolve => {
-      rl.question('Phone> ', resolve);
-    })
-    creds.password = await new Promise(resolve => {
-      rl.question('Password> ', resolve);
-    })
+    const creds = JSON.parse(fs.readFileSync(path.join(__dirname, "creds.json")), "utf8") || {}
+    if (Object.keys(creds).length === 0) {
+      creds.user_name = await new Promise(resolve => {
+        rl.question('Phone> ', resolve);
+      })
+      creds.password = await new Promise(resolve => {
+        rl.question('Password> ', resolve);
+      })
+    }
 
     const reqparampost = encrypt(JSON.stringify(creds))
     form.append("reqparampost", reqparampost)
@@ -43,6 +45,7 @@ async function login() {
     
     fs.writeFileSync(path.join(__dirname, "env.json"), data, "utf8")
     account = JSON.parse(data)
+    fs.writeFileSync(path.join(__dirname, "creds.json"), creds, "utf8")
   } finally {
     rl.close()
     return account

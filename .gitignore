@@ -3,4 +3,4 @@
 *.zip
 *.apk*
 *.keystore
-roli/env.json
+roli/*.json

@@ -87,8 +87,8 @@ unanswered questions:
 
 Daily API:
 
-- daily_reward/info_indirect
-- daily_reward/info
+- daily_reward/info_indirect [checked]
+- daily_reward/info [useless endpoint]
 - daily_reward/indirect_redeem
 - daily_reward/process_redeem
-- daily_reward/check_status
+- daily_reward/check_status [checked]
