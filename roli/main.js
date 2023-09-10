@@ -1,3 +1,5 @@
+#!node
+
 const readline = require('node:readline');
 const fs = require('node:fs');
 const { stdin: input, stdout: output } = require('node:process');
@@ -21,7 +23,7 @@ const config = {
   wheel_item_id: '58' // 1000 coins!
 };
 
-(async () => {
+async function run() {
   const rl = readline.createInterface({ input, output });
   let user
   let token
@@ -97,10 +99,19 @@ const config = {
       'Host': 'roli.telkomsel.com',
     }
   }).then(res => res.text())
-  console.log(decrypt(spin_coin))
+  const result = JSON.parse(decrypt(spin_coin))
+  if (result.message == "User not found.") {
+    throw new Error('Please Relogin')
+  }
+  console.log(result)
 
   rl.close()
-})()
+}
+
+function relogin() {
+  fs.unlinkSync("env.json")
+  run()
+}
 
 function randomize() {
   return Math.floor(Math.random() * 1000) + Math.floor(Math.random() * 5000)
@@ -122,3 +133,5 @@ function getCurrentDateTimeFormatted() {
 
   return formattedDateTime;
 }
+
+run().catch(relogin)

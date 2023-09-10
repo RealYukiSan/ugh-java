@@ -9,11 +9,12 @@ str6 contain URL and some param
 jSONObject contain decrypted reqparam
 
 todo:
-findout encryption mechanism for reqparam and reqparampost
-findout attendance api (reedem / 30 days)
+findout encryption mechanism for reqparam and reqparampost [done]
+findout attendance api (reedem / 30 days) [founded on daily_reward/info_indirect]
 findout cara perpanjang validity coin
 create auto-fill survey
 create scheduler script like cronjob? register as startup program?
+Since the login device affects other devices (to be logged out), do we need to implement auto-relog? [done]
 apakah ada celah pada kode referral invite friend? biar bisa nuyul :v
 
 what I want to understand:
@@ -83,3 +84,11 @@ env:
 unanswered questions:
 
 - session_id? Is this a real id or encrypted data?
+
+Daily API:
+
+- daily_reward/info_indirect
+- daily_reward/info
+- daily_reward/indirect_redeem
+- daily_reward/process_redeem
+- daily_reward/check_status
