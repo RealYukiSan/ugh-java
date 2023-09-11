@@ -12,7 +12,8 @@ async function login() {
   try {
     account = JSON.parse(fs.readFileSync(path.join(__dirname, "env.json"), "utf8"))
   } catch {
-    const creds = JSON.parse(fs.readFileSync(path.join(__dirname, "creds.json")), "utf8") || {}
+    const credsPath = path.join(__dirname, "creds.json")
+    const creds = fs.existsSync(credsPath) ? JSON.parse(fs.readFileSync(credsPath), "utf8") : {}
     if (Object.keys(creds).length === 0) {
       creds.user_name = await new Promise(resolve => {
         rl.question('Phone> ', resolve);
@@ -42,10 +43,10 @@ async function login() {
       }
     }).then(res => res.text())
     const data = decrypt(response)
+    account = JSON.parse(data)
     
     fs.writeFileSync(path.join(__dirname, "env.json"), data, "utf8")
-    account = JSON.parse(data)
-    fs.writeFileSync(path.join(__dirname, "creds.json"), creds, "utf8")
+    fs.writeFileSync(path.join(__dirname, "creds.json"), JSON.stringify(creds), "utf8")
   } finally {
     rl.close()
     return account
