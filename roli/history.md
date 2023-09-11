@@ -107,3 +107,22 @@ body request:
 cannot decrypt: b96ee37e1984860a4bc2c5ddd503d88c939b964b The encryption has different mechanism :"
 
 check_status keyword: `this.h.N0` `this.h.K3(J1);` `tglRedeemDaily` dan berkaitan dengan `indirect_redeem`
+
+Interesting endpoint: [GET] internal_counter/my_counter it seems update or increment the daily N/30 days proof with search `home_bonus_info_sisa` keyword both on code and resource
+query:
+reqparam (session included here)
+token
+app version
+key
+Sample reqparam: `{key,session,android metadata,version_number,token,msisdn,id_user}`
+Sample response: `{"error":false,"message":"get internal counter","data":"22"}`
+
+agak weird sih auth methodnya pake session tapi gak disimpen di cookie, dan bukan jwt token yang disimpen di header juga, mungkin emang sengaja buat custom auth sendiri tapi gak tau ni best practice atau engga nya dari sisi developer
+
+todo: gather information on `tgl*` especially `tglCounter` vs `tglRedeemDaily` on session manager
+
+reedem button: `label_redeem_indirect` menjadi readonly setelah hit endpoint indirect_redeem dan mendptkan response seperti di atas, dan kupikir yang menyebabkannya adalah line berikut `if (J1.equals(this.h.F0()) && !this.h.J().equalsIgnoreCase("") && this.h.K() > 0) {` dan itu dipanggil dari `HomeFragment.this.f6(parseInt);`
+
+read info `internal_counter/my_counter` and permutasi `optin/update_counter`
+
+btw sepertinya kebanyakan api endpoint hanya untuk memperbarui ui / view screen saja, e.g: `user/coin` `daily_reward/info_indirect`
