@@ -2,7 +2,7 @@ const readline = require('node:readline');
 const fs = require('node:fs');
 const path = require('node:path');
 const { stdin: input, stdout: output } = require('node:process');
-const { encrypt, decrypt } = require('./decode');
+const { encrypt, decrypt } = require('./cryptography');
 const { config } = require('./constant');
 const rl = readline.createInterface({ input, output });
 

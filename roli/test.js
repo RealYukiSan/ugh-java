@@ -1,7 +1,7 @@
 #!node
 
 const { config } = require("./constant");
-const { decrypt, encrypt } = require("./decode");
+const { decrypt, encrypt } = require("./cryptography");
 const { tokenize, login, relogin } = require("./util");
 
 /* testing custom request */

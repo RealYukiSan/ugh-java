@@ -1,7 +1,7 @@
 #!node
 
 const { config } = require('./constant');
-const { encrypt, decrypt } = require('./decode');
+const { encrypt, decrypt } = require('./cryptography');
 const { relogin, login, tokenize, getCurrentDateTimeFormatted } = require('./util');
 
 async function run() {
