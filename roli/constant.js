@@ -2,7 +2,7 @@ const config = {
   baseurl: "https://roli.telkomsel.com",
   version_number: '3.0.6',
   android: {
-    "android_id": "e6751f1da2754b8d", // or tapjoy ads?
+    "android_id": "e6751f1da2754b8d", // or tapjoy ads? TJC_ANDROID_ID
     "model":"sdk_gphone64_x86_64",
     "android_sdk_version":"31",
     "manufacturer":"Google",

@@ -87,8 +87,23 @@ unanswered questions:
 
 Daily API:
 
-- daily_reward/info_indirect [checked]
+- daily_reward/info_indirect [fetch info from api and show on home screen, `{"error":false,"message":"coin found","data":[{"id":"reward29","title":"RoLiRewardDay29","counter":"29","reward":"29000 Koin","total":30000}]}`] tested on test.js
 - daily_reward/info [useless endpoint]
-- daily_reward/indirect_redeem
-- daily_reward/process_redeem
-- daily_reward/check_status [checked]
+- daily_reward/indirect_redeem [reedem current coin in N days, `{"error":true,"message":"Mohon maaf, karena sahabat Oli baru aktif lagi, reward harian kamu baru bisa diambil setelah 24 jam. Terima kasih."}`] hipotesis/asumsi karena relog device
+- daily_reward/process_redeem [useless endpoint]
+- daily_reward/check_status [`{"error":false,"message":"belum melakukan redeem","trx_status":"empty","created_at":""}`] tested on test.js
+
+## Sample
+
+decrypted indirect_redeem data
+query string:
+token
+app version
+key
+reqparam: `{...device_metadata,app version,token,msisdn,id_user}` no key included
+body request:
+`{key,session,msisdn,"reqid":"11092023071712-b96ee37e1984860a4bc2c5ddd503d88c939b964b-8-rol1#@#netr3fo",token,app version}`
+11092023071712 = actually a date, tgl 11 bulan 09, thn 2023, jam 07 menit 17 detik 12
+cannot decrypt: b96ee37e1984860a4bc2c5ddd503d88c939b964b The encryption has different mechanism :"
+
+check_status keyword: `this.h.N0` `this.h.K3(J1);` `tglRedeemDaily` dan berkaitan dengan `indirect_redeem`
