@@ -1,0 +1,22 @@
+{
+  "error": false,
+  "message": "get data survey",
+  "data": [
+    {
+      "id": "642",
+      "title": "Daily Survey roli September #12",
+      "description": "Isi surveynya dan dapatkan langsung 10 koin!",
+      "reward": "10",
+      "publish": "1",
+      "sort": "1",
+      "created_at": "2023-09-12 07:44:30",
+      "updated_at": "2023-09-12 07:44:30",
+      "image_name": "64ffb46e9265b.png",
+      "image_url": "https://roli.telkomsel.com/images/survey/64ffb46e9265b.png",
+      "take": 0
+    }
+  ],
+  "total_page": 1,
+  "total_record": 1,
+  "page_num": 1
+}
