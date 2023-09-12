@@ -17,7 +17,7 @@ jSONObject contain decrypted reqparam
 ### todo
 
 - findout encryption mechanism for reqparam and reqparampost [done]
-- findout attendance api (reedem / 30 days) [founded on daily_reward/info_indirect, but I think it's only for print on the home screen :v]
+- findout attendance api (reedem / 30 days) [founded on daily_reward/info_indirect]
 - observe proses perpanjang validity coin
 - create auto-fill survey
 - create scheduler script like cronjob? register as startup program?
@@ -105,7 +105,7 @@ unanswered questions:
 
 Daily API:
 
-- daily_reward/info_indirect [fetch info from api and show on home screen, `{"error":false,"message":"coin found","data":[{"id":"reward29","title":"RoLiRewardDay29","counter":"29","reward":"29000 Koin","total":30000}]}`] tested on test.js
+- daily_reward/info_indirect [fetch info from api and show on home screen] tested on test.js
 - daily_reward/info [useless endpoint]
 - daily_reward/indirect_redeem [reedem current coin in N days, `{"error":true,"message":"Mohon maaf, karena sahabat Oli baru aktif lagi, reward harian kamu baru bisa diambil setelah 24 jam. Terima kasih."}`] hipotesis/asumsi karena relog device
 - daily_reward/process_redeem [useless endpoint]
@@ -128,7 +128,7 @@ body request:
 
 11092023071712 = actually a date, tgl 11 bulan 09, thn 2023, jam 07 menit 17 detik 12
 
-cannot decrypt: b96ee37e1984860a4bc2c5ddd503d88c939b964b The encryption has different mechanism :"
+b96ee37e1984860a4bc2c5ddd503d88c939b964b = a session
 
 check_status keyword: `this.h.N0` `this.h.K3(J1);` `tglRedeemDaily` dan berkaitan dengan `indirect_redeem`
 
@@ -154,3 +154,18 @@ reedem button: `label_redeem_indirect` menjadi readonly setelah hit endpoint ind
 read info `internal_counter/my_counter` and permutasi `optin/update_counter`
 
 btw sepertinya kebanyakan api endpoint hanya untuk memperbarui ui / view screen saja, e.g: `user/coin` `daily_reward/info_indirect`
+
+### List Order of daily attandance
+
+## `internal_counter/my_counter`
+
+get current counted day, for e.g total 30 - remaining 21 = current 9
+
+## `daily_reward/info_indirect`
+
+I think it's only for print on the home screen :v
+`{"error":false,"message":"coin found","data":[{"id":"reward29","title":"RoLiRewardDay29","counter":"29","reward":"29000 Koin","total":30000}]}`
+
+## `optin/update_counter`
+
+if the conditions are met
