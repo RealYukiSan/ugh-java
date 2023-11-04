@@ -169,3 +169,9 @@ I think it's only for print on the home screen :v
 ## `optin/update_counter`
 
 if the conditions are met
+
+# sepertinya untuk absen daily check-in tidak dapat diganggu gugat dari sisi client nya :v
+
+# karena sepertinya mengguanakn interval untuk increment value di databasenya
+
+# tapi kayaknya tetep ada yang ngetrigger interval itu dari sisi client nya, cuma masih belom diketahui, need to investigate more :v
