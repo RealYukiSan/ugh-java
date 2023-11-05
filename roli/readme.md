@@ -74,3 +74,17 @@ Sample response:
 ```
 
 it turns out, the error is caused by wrong value in a property of token XD
+
+## Backup credential manually - no need to login - devices need to be rooted
+
+```bash
+# use 'adb root' if you need adb to have root access
+adb pull "//data\data\com.telkomsel.roli\shared_prefs\TelkomselOptinPref.xml"
+# modif the content and send back to device
+adb push TelkomselOptinPref.xml "//data\data\com.telkomsel.roli\shared_prefs\TelkomselOptinPref.xml"
+```
+
+`//` is needed if you on git bash, see [the stackoverflow](https://stackoverflow.com/questions/16344985/how-do-i-pass-an-absolute-path-to-the-adb-command-via-git-bash-for-windows)
+otherwise it will be error
+
+\*Tadi kek na ngebug, 1/2 bjir daily chance to play nya, tapi sayang cannot reproduce O_O (mungkin kebijakan dari sono nya dah diperbarui)

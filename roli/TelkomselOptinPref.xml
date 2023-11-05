@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<map>
+    <int name="stepRegister" value="0" />
+    <string name="jmlCounterHash">edbed3b69276650c759f5580f4b8e729</string>
+    <string name="userTglLahir">1985-07-15</string>
+    <string name="tglCounterKuota">05-11-2023</string>
+    <int name="bahasa" value="2" />
+    <boolean name="LockScreen" value="true" />
+    <string name="hashSoftSignup"></string>
+    <string name="hp">YOUR PHONE NUMBER HERE</string>
+    <boolean name="isHome" value="true" />
+    <string name="sessionID">YOUR SESSION ID HERE</string>
+    <boolean name="afterLogin" value="false" />
+    <int name="CounterErrorPinningTry" value="0" />
+    <string name="idSoftSignup">0</string>
+    <string name="Coin">106300</string>
+    <boolean name="isCounterUpdate" value="true" />
+    <string name="provinsiId">0</string>
+    <int name="jumlahMainWheelMax" value="2" />
+    <int name="pubmaticCounter" value="0" />
+    <int name="urutanVast" value="2" />
+    <string name="tglCounterUpdate">05-11-2023</string>
+    <boolean name="inboxFetchServer" value="false" />
+    <string name="tglLiveLog">05-11-2023</string>
+    <string name="tglDaftarNew">2022-07-15</string>
+    <string name="IdUser">YOUR DATA.ID HERE</string>
+    <string name="bixjd">YOUR DATA.ID HERE</string>
+    <boolean name="LockScreenPabblUploadProfile" value="true" />
+    <int name="jumlahMainWheel" value="0" />
+    <string name="tipeGameWof">reg</string>
+    <int name="ratingUser" value="0" />
+    <boolean name="PabblLockscreenSettingCek" value="false" />
+    <string name="idAdvertisingGoog">bfdd6489-10d5-47b8-81fb-05efa76f75c3</string>
+    <boolean name="introApplikasi" value="true" />
+    <boolean name="LockScreenPabblROLiBackend" value="true" />
+    <int name="CounterErrorPinning" value="0" />
+    <string name="nama">LEAVE THIS AS IT IS</string>
+    <string name="infoKuota"> Koin</string>
+    <boolean name="isLoggedIn" value="true" />
+    <string name="setAmoobePixel"></string>
+    <string name="urlMgm"></string>
+    <boolean name="isLokasi" value="false" />
+    <string name="linkInvite"></string>
+    <string name="rssCacheWaktu">05-11-2023 11:41:43</string>
+    <string name="loginType">google</string>
+    <int name="LockScreenStatus" value="2" />
+    <string name="fcmId">f9ci--5dTaWTfzFDQz0q7R:APA91bFspHb0g2HCUuDqKTDWgNl3GWsArngK9Ydo1cvHTjK5tp6hQICS7i8JTljsEmgRVpDQuXRMgfoHVCV6CBObOg-dt96sBeyxetTIxJcQBO21iC5HPO0JD4Ftz9sh21av6ekLX7hf</string>
+    <string name="tglLive">05-11-2023</string>
+    <int name="inboxIsReadReset" value="1" />
+    <boolean name="after_register" value="false" />
+    <int name="loginFrom" value="0" />
+    <string name="kodeInvite"></string>
+    <boolean name="lokasiReject" value="false" />
+    <boolean name="isSudahLoginSignup" value="true" />
+    <string name="tglCounterPabblSetting">05-11-2023 11:41:42</string>
+    <boolean name="isPertama" value="false" />
+    <boolean name="PabblLockscreenSetting" value="true" />
+    <boolean name="isPertamaCekStatusRedeem" value="true" />
+    <string name="idLevel">user</string>
+    <string name="idPostr">null</string>
+    <string name="email"></string>
+    <boolean name="isRatingUser" value="false" />
+    <string name="tglRating"></string>
+    <string name="userHash">YOUR USER HASH HERE</string>
+    <string name="tglLastMainWheel">05-11-2023</string>
+    <boolean name="isLoginSignup" value="false" />
+    <string name="avatar">null</string>
+    <string name="idSosmed"></string>
+    <boolean name="autostart_pass" value="false" />
+    <boolean name="LockScreenPabbl" value="true" />
+    <boolean name="iamLive" value="true" />
+    <string name="userGender">m</string>
+    <int name="infoTotal" value="30000" />
+    <string name="hashPostr">null</string>
+    <string name="provinsiISO3166">{&quot;101&quot;:{&quot;key&quot;:&quot;ID-AC&quot;,&quot;name&quot;:&quot;Aceh&quot;},&quot;102&quot;:{&quot;key&quot;:&quot;ID-BA&quot;,&quot;name&quot;:&quot;Bali&quot;},&quot;103&quot;:{&quot;key&quot;:&quot;ID-BB&quot;,&quot;name&quot;:&quot;Kepulauan Bangka Belitung&quot;},&quot;104&quot;:{&quot;key&quot;:&quot;ID-BT&quot;,&quot;name&quot;:&quot;Banten&quot;},&quot;105&quot;:{&quot;key&quot;:&quot;ID-BE&quot;,&quot;name&quot;:&quot;Bengkulu&quot;},&quot;106&quot;:{&quot;key&quot;:&quot;ID-GO&quot;,&quot;name&quot;:&quot;Gorontalo&quot;},&quot;107&quot;:{&quot;key&quot;:&quot;ID-JK&quot;,&quot;name&quot;:&quot;Jakarta Raya&quot;},&quot;108&quot;:{&quot;key&quot;:&quot;ID-JA&quot;,&quot;name&quot;:&quot;Jambi&quot;},&quot;109&quot;:{&quot;key&quot;:&quot;ID-JB&quot;,&quot;name&quot;:&quot;Jawa Barat&quot;},&quot;110&quot;:{&quot;key&quot;:&quot;ID-JT&quot;,&quot;name&quot;:&quot;Jawa Tengah&quot;},&quot;111&quot;:{&quot;key&quot;:&quot;ID-JI&quot;,&quot;name&quot;:&quot;Jawa Timur&quot;},&quot;112&quot;:{&quot;key&quot;:&quot;ID-KB&quot;,&quot;name&quot;:&quot;Kalimantan Barat&quot;},&quot;113&quot;:{&quot;key&quot;:&quot;ID-KS&quot;,&quot;name&quot;:&quot;Kalimantan Selatan&quot;},&quot;114&quot;:{&quot;key&quot;:&quot;ID-KT&quot;,&quot;name&quot;:&quot;Kalimantan Tengah&quot;},&quot;115&quot;:{&quot;key&quot;:&quot;ID-KI&quot;,&quot;name&quot;:&quot;Kalimantan Timur&quot;},&quot;116&quot;:{&quot;key&quot;:&quot;ID-KU&quot;,&quot;name&quot;:&quot;Kalimantan Utara&quot;},&quot;117&quot;:{&quot;key&quot;:&quot;ID-KR&quot;,&quot;name&quot;:&quot;Kepulauan Riau&quot;},&quot;118&quot;:{&quot;key&quot;:&quot;ID-LA&quot;,&quot;name&quot;:&quot;Lampung&quot;},&quot;119&quot;:{&quot;key&quot;:&quot;ID-ML&quot;,&quot;name&quot;:&quot;Maluku&quot;},&quot;120&quot;:{&quot;key&quot;:&quot;ID-MU&quot;,&quot;name&quot;:&quot;Maluku Utara&quot;},&quot;121&quot;:{&quot;key&quot;:&quot;ID-NB&quot;,&quot;name&quot;:&quot;Nusa Tenggara Barat&quot;},&quot;122&quot;:{&quot;key&quot;:&quot;ID-NT&quot;,&quot;name&quot;:&quot;Nusa Tenggara Timur&quot;},&quot;123&quot;:{&quot;key&quot;:&quot;ID-PP&quot;,&quot;name&quot;:&quot;Papua&quot;},&quot;124&quot;:{&quot;key&quot;:&quot;ID-PB&quot;,&quot;name&quot;:&quot;Papua Barat&quot;},&quot;125&quot;:{&quot;key&quot;:&quot;ID-RI&quot;,&quot;name&quot;:&quot;Riau&quot;},&quot;126&quot;:{&quot;key&quot;:&quot;ID-SR&quot;,&quot;name&quot;:&quot;Sulawesi Barat&quot;},&quot;127&quot;:{&quot;key&quot;:&quot;ID-SN&quot;,&quot;name&quot;:&quot;Sulawesi Selatan&quot;},&quot;128&quot;:{&quot;key&quot;:&quot;ID-ST&quot;,&quot;name&quot;:&quot;Sulawesi Tengah&quot;},&quot;129&quot;:{&quot;key&quot;:&quot;ID-SG&quot;,&quot;name&quot;:&quot;Sulawesi Tenggara&quot;},&quot;130&quot;:{&quot;key&quot;:&quot;ID-SA&quot;,&quot;name&quot;:&quot;Sulawesi Utara&quot;},&quot;131&quot;:{&quot;key&quot;:&quot;ID-SB&quot;,&quot;name&quot;:&quot;Sumatera Barat&quot;},&quot;132&quot;:{&quot;key&quot;:&quot;ID-SS&quot;,&quot;name&quot;:&quot;Sumatera Selatan&quot;},&quot;133&quot;:{&quot;key&quot;:&quot;ID-SU&quot;,&quot;name&quot;:&quot;Sumatera Utara&quot;},&quot;134&quot;:{&quot;key&quot;:&quot;ID-YO&quot;,&quot;name&quot;:&quot;Yogyakarta&quot;}}</string>
+    <int name="inMobiCounter" value="0" />
+    <string name="tglCounter">05-11-2023</string>
+    <string name="username">YOUR PHONE NUMBER HERE</string>
+</map>

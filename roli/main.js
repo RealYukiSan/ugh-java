@@ -46,7 +46,8 @@ async function run() {
   console.log(result)
 }
 
-run().catch(async () => {
-  await relogin()
-  run()
+run().catch(async (e) => {
+  console.log(e);
+  // await relogin()
+  // run()
 })
