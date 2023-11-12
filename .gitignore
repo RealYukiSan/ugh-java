@@ -5,3 +5,4 @@
 *.keystore
 roli/creds.json
 roli/env.json
+roli/env.backup.json
