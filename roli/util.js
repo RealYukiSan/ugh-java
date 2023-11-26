@@ -46,12 +46,12 @@ async function login() {
         }
       }).then(res => res.text())
       
-      JSON.parse(data)
-      throw new Error(data)
+      JSON.parse(response)
+      throw new Error(response)
     } catch (e) {
-      if (isJsonString(e)) {
+      if (isJsonString(e.message)) {
         rl.close()
-        throw JSON.parse(e)
+        throw JSON.parse(e.message)
       } else {
         const data = decrypt(response)
         account = JSON.parse(data)

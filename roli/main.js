@@ -39,11 +39,16 @@ async function run() {
       'Host': 'roli.telkomsel.com',
     }
   }).then(res => res.text())
-  const result = JSON.parse(decrypt(spin_coin))
-  if (result.message == "User not found.") {
-    throw new Error('Please Relogin')
+
+  try {
+    console.log(JSON.parse(spin_coin))
+  } catch {
+    const result = JSON.parse(decrypt(spin_coin))
+    if (result.message == "User not found.") {
+      throw new Error('Please Relogin')
+    }
+    console.log(result)
   }
-  console.log(result)
 }
 
 run().catch(async (e) => {
