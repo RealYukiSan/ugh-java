@@ -8,53 +8,75 @@ const rl = readline.createInterface({ input, output });
 
 async function login() {
   let account
+  let response
   const form = new FormData()
+
   try {
     account = JSON.parse(fs.readFileSync(path.join(__dirname, "env.json"), "utf8"))
   } catch {
-    const credsPath = path.join(__dirname, "creds.json")
-    const creds = fs.existsSync(credsPath) ? JSON.parse(fs.readFileSync(credsPath), "utf8") : {}
-    if (Object.keys(creds).length === 0) {
-      creds.user_name = await new Promise(resolve => {
-        rl.question('Phone> ', resolve);
-      })
-      creds.password = await new Promise(resolve => {
-        rl.question('Password> ', resolve);
-      })
-    }
-
-    const reqparampost = encrypt(JSON.stringify(creds))
-    form.append("reqparampost", reqparampost)
-    const token = encrypt(tokenize("user/login"))
-    const reqparam = encrypt(JSON.stringify({
-      "key": config.key,
-      "version_number": config.version_number,
-      "token": token,
-      ...config.android
-    }))
-    const response = await fetch(new URL(`/api/user/login?key=${config.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, config.baseurl), {
-      method: "POST",
-      body: form,
-      headers: {
-        'Accept-Encoding': 'gzip',
-        'User-Agent': 'okhttp/4.9.0',
-        'Connection': 'Keep-Alive',
-        'Host': 'roli.telkomsel.com',
+    try {
+      const credsPath = path.join(__dirname, "creds.json")
+      const creds = fs.existsSync(credsPath) ? JSON.parse(fs.readFileSync(credsPath), "utf8") : {}
+      if (Object.keys(creds).length === 0) {
+        creds.user_name = await new Promise(resolve => {
+          rl.question('Phone> ', resolve);
+        })
+        creds.password = await new Promise(resolve => {
+          rl.question('Password> ', resolve);
+        })
       }
-    }).then(res => res.text())
-    const data = decrypt(response)
-    account = JSON.parse(data)
-    
-    fs.writeFileSync(path.join(__dirname, "env.json"), data, "utf8")
-    fs.writeFileSync(path.join(__dirname, "creds.json"), JSON.stringify(creds), "utf8")
-  } finally {
-    rl.close()
-    return account
+  
+      const reqparampost = encrypt(JSON.stringify(creds))
+      form.append("reqparampost", reqparampost)
+      const token = encrypt(tokenize("user/login"))
+      const reqparam = encrypt(JSON.stringify({
+        "key": config.key,
+        "version_number": config.version_number,
+        "token": token,
+        ...config.android
+      }))
+      response = await fetch(new URL(`/api/user/login?key=${config.key}&version_number=${config.version_number}&token=${token}&reqparam=${reqparam}`, config.baseurl), {
+        method: "POST",
+        body: form,
+        headers: {
+          'Accept-Encoding': 'gzip',
+          'User-Agent': 'okhttp/4.9.0',
+          'Connection': 'Keep-Alive',
+          'Host': 'roli.telkomsel.com',
+        }
+      }).then(res => res.text())
+      
+      JSON.parse(data)
+      rl.close()
+      throw new Error(data)
+    } catch (e) {
+      if (isJsonString(e)) {
+        throw JSON.parse(e)
+      } else {
+        const data = decrypt(response)
+        account = JSON.parse(data)
+        
+        fs.writeFileSync(path.join(__dirname, "env.json"), data, "utf8")
+        fs.writeFileSync(path.join(__dirname, "creds.json"), JSON.stringify(creds), "utf8")
+        
+        rl.close()
+        return account
+      }
+    }
   }
 }
 
+function isJsonString(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
+  }
+  return true;
+}
+
 async function relogin() {
-  fs.unlinkSync("env.json")
+  if (fs.existsSync("env.json")) fs.unlinkSync("env.json")
   await login()
 }
 

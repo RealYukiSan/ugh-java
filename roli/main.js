@@ -2,7 +2,7 @@
 
 const { config } = require('./constant');
 const { encrypt, decrypt } = require('./cryptography');
-const { relogin, login, tokenize, getCurrentDateTimeFormatted } = require('./util');
+const { login, tokenize, getCurrentDateTimeFormatted } = require('./util');
 
 async function run() {
   const form = new FormData()
@@ -48,6 +48,4 @@ async function run() {
 
 run().catch(async (e) => {
   console.log(e);
-  // await relogin()
-  // run()
 })
