@@ -47,10 +47,10 @@ async function login() {
       }).then(res => res.text())
       
       JSON.parse(data)
-      rl.close()
       throw new Error(data)
     } catch (e) {
       if (isJsonString(e)) {
+        rl.close()
         throw JSON.parse(e)
       } else {
         const data = decrypt(response)
@@ -64,6 +64,9 @@ async function login() {
       }
     }
   }
+
+  rl.close()
+  return account
 }
 
 function isJsonString(str) {
