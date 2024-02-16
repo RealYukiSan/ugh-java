@@ -1,3 +1,5 @@
+this repo created in order to understand how Android build system actually works under the hood
+
 ## Manual Build simple hello world APK
 
 ```powershell
