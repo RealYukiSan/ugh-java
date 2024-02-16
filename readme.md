@@ -47,7 +47,7 @@ adb install .\final_roli.apk # final signed patched  aligned apk
 ### [Other Link](https://www.facebook.com/permalink.php?story_fbid=pfbid06v2GZ6ctwsWStEkVt9KhYLzc3Gg8sQTpks9jqnFcEpJRKaiWepB45NxH4FbBDSMSl&id=100090321692618)
 
 ### Todo:
-- add kotlin example
+- add kotlin example, [reference](https://stackoverflow.com/questions/44690812/kotlin-file-to-apk-android-flow)
 - add hello-jni
 - update view
 - add APKs to releases
