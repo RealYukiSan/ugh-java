@@ -47,3 +47,8 @@ adb install .\final_roli.apk # final signed patched  aligned apk
 ### Todo:
 - add kotlin example
 - add hello-jni
+- update view
+- add APKs to releases
+
+### Screenshot view:
+...
