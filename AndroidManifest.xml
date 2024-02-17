@@ -1,7 +1,7 @@
 <?xml version='1.0'?>
-<manifest xmlns:a='http://schemas.android.com/apk/res/android' package='dom.domain' a:versionCode='0' a:versionName='0'>
+<manifest xmlns:a='http://schemas.android.com/apk/res/android' package='dom.domain'>
   <application a:label='Saying hello'>
-    <activity a:name='dom.domain.SayingHello'>
+    <activity a:name='dom.domain.SayingHello' a:exported="true">
       <intent-filter>
           <category a:name='android.intent.category.LAUNCHER'/>
           <action a:name='android.intent.action.MAIN'/>
