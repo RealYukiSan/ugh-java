@@ -1,3 +1,6 @@
+hello-jni/lib
+hello-jni/tests
+hello-jni/obj
 *.class
 *.dex
 *.zip

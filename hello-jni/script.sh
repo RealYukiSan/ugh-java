@@ -12,17 +12,23 @@ fi
 case $1 in
     build)
         echo "Building..."
+	ndk-build NDK_DEBUG=1
+	mv libs lib
 	SDK="$HOME/Android/Sdk/platforms/android-34/android.jar"
-	aapt2 link --manifest AndroidManifest.xml -I $SDK -o samplebuild.apk
-	javac -classpath $SDK -source 17 -target 17 src/dom/domain/*.java
-	d8 src/dom/domain/SayingHello.class --lib $SDK
+	aapt2 compile --dir res -o res.zip
+	aapt2 link --manifest AndroidManifest.xml -I $SDK res.zip -o samplebuild.apk
+	javac -classpath $SDK -source 17 -target 17 src/com/example/hellojni/*.java
+	d8 src/com/example/hellojni/*.class --lib $SDK
+	zip -ur samplebuild.apk lib
 	zip -uj samplebuild.apk classes.dex
 	zipalign -p -f -v 4 samplebuild.apk aligned.apk
 	apksigner sign --ks debug.keystore --ks-pass pass:android --out hello.apk aligned.apk
         ;;
     clean)
         echo "Cleaning up..."
-	rm -fv *.apk* src/dom/domain/*.class classes.dex 
+	mv lib libs
+	ndk-build clean
+	rm -fv *.apk* src/com/example/hellojni/*.class classes.dex res.zip
 	;;
     *)
         echo "Invalid parameter"
