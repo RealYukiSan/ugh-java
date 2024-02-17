@@ -57,4 +57,28 @@ adb install final_roli.apk # final signed patched  aligned apk
 
 ### Screenshot view:
 ![image](https://github.com/RealYukiSan/ugh-java/assets/126035476/88744e2a-0656-4263-bc78-2825fb482c0c)
+![image](https://github.com/RealYukiSan/ugh-java/assets/126035476/0ea908d4-985b-4060-944a-8fc32fc09244)
+![image](https://github.com/RealYukiSan/ugh-java/assets/126035476/980f3bfa-3d30-4a0a-897b-ea9689e041fa)
+
+installation success but with error occurs?
+```java
+Exception occurred while executing 'install-incremental':
+java.lang.IllegalArgumentException: Incremental installation not allowed.
+        at com.android.server.pm.PackageInstallerSession.<init>(PackageInstallerSession.java:1083)
+        at com.android.server.pm.PackageInstallerService.createSessionInternal(PackageInstallerService.java:829)
+        at com.android.server.pm.PackageInstallerService.createSession(PackageInstallerService.java:561)
+        at com.android.server.pm.PackageManagerShellCommand.doCreateSession(PackageManagerShellCommand.java:3143)
+        at com.android.server.pm.PackageManagerShellCommand.doRunInstall(PackageManagerShellCommand.java:1341)
+        at com.android.server.pm.PackageManagerShellCommand.runIncrementalInstall(PackageManagerShellCommand.java:1299)
+        at com.android.server.pm.PackageManagerShellCommand.onCommand(PackageManagerShellCommand.java:197)
+        at com.android.modules.utils.BasicShellCommandHandler.exec(BasicShellCommandHandler.java:97)
+        at android.os.ShellCommand.exec(ShellCommand.java:38)
+        at com.android.server.pm.PackageManagerService.onShellCommand(PackageManagerService.java:24883)
+        at android.os.Binder.shellCommand(Binder.java:950)
+        at android.os.Binder.onTransact(Binder.java:834)
+        at android.content.pm.IPackageManager$Stub.onTransact(IPackageManager.java:4818)
+        at com.android.server.pm.PackageManagerService.onTransact(PackageManagerService.java:8928)
+        at android.os.Binder.execTransactInternal(Binder.java:1184)
+        at android.os.Binder.execTransact(Binder.java:1143)
+```
 
