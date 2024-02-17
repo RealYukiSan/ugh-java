@@ -52,8 +52,9 @@ adb install final_roli.apk # final signed patched  aligned apk
 ### Todo:
 - add kotlin example, [reference](https://stackoverflow.com/questions/44690812/kotlin-file-to-apk-android-flow)
 - add hello-jni
-- update view
+- update view and remove check for update popup
 - add APKs to releases
 
 ### Screenshot view:
-...
+![image](https://github.com/RealYukiSan/ugh-java/assets/126035476/88744e2a-0656-4263-bc78-2825fb482c0c)
+
