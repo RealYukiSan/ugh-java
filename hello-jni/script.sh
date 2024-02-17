@@ -22,7 +22,7 @@ case $1 in
 	zip -ur samplebuild.apk lib
 	zip -uj samplebuild.apk classes.dex
 	zipalign -p -f -v 4 samplebuild.apk aligned.apk
-	apksigner sign --ks debug.keystore --ks-pass pass:android --out hello.apk aligned.apk
+	apksigner sign --ks debug.keystore --ks-pass pass:android --out hello-jni.apk aligned.apk
         ;;
     clean)
         echo "Cleaning up..."
