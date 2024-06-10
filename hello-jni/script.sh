@@ -12,7 +12,7 @@ fi
 case $1 in
     build)
         echo "Building..."
-	ndk-build NDK_DEBUG=1
+	ndk-build -d --trace NDK_DEBUG=1
 	mv libs lib
 	SDK="$HOME/Android/Sdk/platforms/android-34/android.jar"
 	aapt2 compile --dir res -o res.zip
