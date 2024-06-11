@@ -26,9 +26,9 @@ case $1 in
         ;;
     clean)
         echo "Cleaning up..."
-	mv lib libs
-	ndk-build clean
-	rm -fv *.apk* src/com/example/hellojni/*.class classes.dex res.zip
+		mv lib libs
+		ndk-build clean
+		rm -fv *.apk* src/com/example/hellojni/*.class classes.dex res.zip debug.keystore
 	;;
     *)
         echo "Invalid parameter"
