@@ -1,5 +1,5 @@
 SDK := $(HOME)/Android/Sdk/platforms/android-34/android.jar
-JAVA_FILES := $(wildcard src/dom/domain/*.java)
+JAVA_FILES := $(wildcard apk/src/com/example/hellojni/*.java)
 CLASS_FILES := $(patsubst %.java, %.class, $(JAVA_FILES))
 DEX_FILE := classes.dex
 NATIVE_FILE := hello-jni.c
@@ -52,21 +52,25 @@ $(JAR_FILE): $(JAVA_PATH)/$(JAVA_CLASS)
 
 clean:
 	@echo "Cleaning up..."
-	@rm -fv *.apk* src/dom/domain/*.class $(DEX_FILE) $(KEYSTORE) *.jar
+	@rm -frv *.apk* apk/src/com/example/hellojni/*.class $(DEX_FILE) $(KEYSTORE) *.jar res.zip libs obj lib
 
 # The below section are for Android
 
-$(APK): AndroidManifest.xml $(SDK)
+$(APK): apk/AndroidManifest.xml $(SDK)
 	@echo "Building..."
-	@aapt2 link --manifest AndroidManifest.xml -I $(SDK) -o $(APK)
+	@ndk-build NDK_DEBUG=0
+	@mv libs lib
+	@aapt2 compile --dir apk/res -o res.zip
+	@aapt2 link --manifest apk/AndroidManifest.xml -I $(SDK) res.zip -o $(APK)
 
 $(CLASS_FILES): $(JAVA_FILES) $(SDK)
 	@javac -classpath $(SDK) -source 17 -target 17 $(JAVA_FILES)
 
 $(DEX_FILE): $(CLASS_FILES)
-	@d8 src/dom/domain/SayingHello.class --lib $(SDK)
+	@d8 apk/src/com/example/hellojni/*.class --lib $(SDK)
 
 $(ALIGNED_APK): $(APK) $(DEX_FILE)
+	zip -ur $(APK) lib
 	@zip -uj $(APK) $(DEX_FILE)
 	@zipalign -p -f -v 4 $(APK) $(ALIGNED_APK)
 
