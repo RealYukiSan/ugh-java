@@ -7,10 +7,15 @@ APK := samplebuild.apk
 ALIGNED_APK := aligned.apk
 SIGNED_APK := hello_jni.apk
 KEYSTORE := debug.keystore
-JAVA_DIR := java/hemlo
-KOTLIN_DIR := kotlin/hemlo
+JAVA_PATH := java/hemlo
+KOTLIN_PATH := kotlin/hellojni
 JAVA_CLASS := HelloJni.class
 HEADER_PATH := /usr/lib/jvm/java-22-openjdk
+NATIVE_PATH := ./jni
+KOTLIN_FILE := HelloJni.kt
+JAVA_FILE := HelloJni.java
+LIB_FILE := libhello-jni.so
+JAR_FILE := hello_java.jar
 
 .PHONY: menu build_apk run_kotlin run_java clean
 
@@ -24,23 +29,30 @@ menu:
 build_apk: $(SIGNED_APK)
 
 run_kotlin: compile_native compile_kotlin
+	@java -Djava.library.path="./jni" -jar ./hello_kt.jar
 
 run_java: compile_native compile_java jar
+	@java -Djava.library.path="./jni" -jar $(JAR_FILE)
 
-compile_native: $(NATIVE_FILE)
-	gcc -I$(HEADER_PATH)/include/ -I$(HEADER_PATH)/include/linux/ -o libhello-jni.so -shared -fPIC $<
+compile_java: $(JAVA_PATH)/$(JAVA_FILE)
+	@javac $<
+
+compile_kotlin:
+	@kotlinc $(KOTLIN_PATH)/$(KOTLIN_FILE) -include-runtime -d hello_kt.jar
+
+compile_native: $(NATIVE_PATH)/$(LIB_FILE)
+
+$(NATIVE_PATH)/$(LIB_FILE): $(NATIVE_PATH)/$(NATIVE_FILE)
+	gcc -I$(HEADER_PATH)/include/ -I$(HEADER_PATH)/include/linux/ -o $(NATIVE_PATH)/$(LIB_FILE) -shared -fPIC $<
+
+jar: $(JAR_FILE)
+
+$(JAR_FILE): $(JAVA_PATH)/$(JAVA_CLASS)
+	@jar --create --file $(JAR_FILE) --main-class="hemlo.HelloJni" -C ./java hemlo/$(JAVA_CLASS)
 
 clean:
 	@echo "Cleaning up..."
-	@rm -fv *.apk* src/dom/domain/*.class $(DEX_FILE) $(KEYSTORE)
-
-$(JAVA_CLASS): $(JAVA_DIR)/HelloJni.java
-	@javac $<
-
-$(JAR_FILE): $(JAVA_CLASS)
-$(JAR_FILE): $(CLASS_DIR)/Hello.class
-	# 2.1 alternative:
-	# $(JAR) --create --file hemlo.jar --main-class="hemlo" $<
+	@rm -fv *.apk* src/dom/domain/*.class $(DEX_FILE) $(KEYSTORE) *.jar
 
 # The below section are for Android
 

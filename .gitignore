@@ -12,3 +12,5 @@ roli/env.backup.json
 roli/creds.backup.json
 .clangd
 *.jar
+*.so
+*.h

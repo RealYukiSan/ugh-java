@@ -1,12 +1,8 @@
-package hellojni
+package hemlo
+
+external fun stringFromJNI(): String;
 
 fun main() {
-    Nt().stringFromJNI()
-}
-
-class Nt {
-    init {
-        System.loadLibrary("hello-jni")
-    }
-    external fun stringFromJNI();
+    System.loadLibrary("hello-jni")
+    println(stringFromJNI())
 }

@@ -17,7 +17,7 @@ jar: $(JAR_FILE)
 
 $(JAR_FILE): $(CLASS_DIR)/Hello.class
 	# 2.1 alternative:
-	# $(JAR) --create --file hemlo.jar --main-class="hemlo" $<
+	# $(JAR) --create --file hemlo.jar --main-class="hemlo.Hello" $<
 	$(JAR) cf $(JAR_FILE) $<
 
 run:
